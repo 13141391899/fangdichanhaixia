@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class RoomInfoService {
   @Autowired
-  RoomInfoMapper roomInfoMapper;
+  private RoomInfoMapper roomInfoMapper;
   public List<RoomInfoDO> getAllRoomInfo() {
     return roomInfoMapper.getAllRoomInfo();
   }
