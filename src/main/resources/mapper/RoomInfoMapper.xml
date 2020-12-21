@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjh.fangdichanhaixia.mapper.RoomInfoMapper">
+  <!-- 以下代码仅提供参考，可选取使用，减少重复工作 -->
+
+  <!--
+    开发负责人：
+    功能说明：请说明SQL应用场景
+    前台 或 后台：
+    频率：请说明qps/tps
+    分表数量：多少个分表/单表是否
+    是否有缓存：
+    缓存失效时间：
+    数据量及增长趋势：请说明现有多少条，每天的数据增长量，至少半年的数据预估
+  -->
+  <!-- select 基本语句 -->
+  <select id="getAllRoomInfo"  resultType="com.zjh.fangdichanhaixia.pojo.RoomInfoDO">
+    select id as id,
+    house_id as houseId,
+    name as name,
+    rented_status as rentedStatus,
+    rent_people_name as rentPeopleName,
+    rent_people_phone_number as rentPeoplePhoneNumber,
+    payor_type as payorType,
+    contract_start_time as contractStartTime,
+    contract_end_time as contractEndTime,
+    creator_name as creatorName,
+    updator_name as updatorName,
+    update_time as updateTime,
+    is_deleted as isDeleted
+    from room_info WHERE 1 = 1
+    <where>
+
+    </where>
+  </select>
+</mapper>
