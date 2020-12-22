@@ -1,7 +1,7 @@
 package com.zjh.fangdichanhaixia.service;
 
 import com.zjh.fangdichanhaixia.mapper.RoomInfoMapper;
-import com.zjh.fangdichanhaixia.enums.RoomInfoDO;
+import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,7 @@ public class RoomInfoService {
   @Autowired
   private RoomInfoMapper roomInfoMapper;
   public List<RoomInfoDO> getAllRoomInfo() {
+    roomInfoMapper.getAllRoomInfo1();
     return roomInfoMapper.getAllRoomInfo();
   }
 }

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace=" com.zjh.fangdichanhaixia.mapper.HouseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zjh.fangdichanhaixia.pojo.HouseInfoDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="boss_id" property="bossId" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="owner_name" property="ownerName" jdbcType="VARCHAR" />
+    <result column="owner_phone_number" property="ownerPhoneNumber" jdbcType="VARCHAR" />
+    <result column="payee_name" property="payeeName" jdbcType="VARCHAR" />
+    <result column="payee_phone_number" property="payeePhoneNumber" jdbcType="VARCHAR" />
+    <result column="contract_start_time" property="contractStartTime" jdbcType="TIMESTAMP" />
+    <result column="contract_end_time" property="contractEndTime" jdbcType="TIMESTAMP" />
+    <result column="rented_type" property="rentedType" jdbcType="BIT" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="updator_name" property="updatorName" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, boss_id, address, owner_name, owner_phone_number, payee_name, payee_phone_number,
+    contract_start_time, contract_end_time, rented_type, creator_name, updator_name,
+    update_time, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from house_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zjh.fangdichanhaixia.pojo.HouseInfoDO" >
+    insert into house_info (id, boss_id, address,
+      owner_name, owner_phone_number, payee_name,
+      payee_phone_number, contract_start_time,
+      contract_end_time, rented_type, creator_name,
+      updator_name, update_time, is_deleted
+      )
+    values (#{id,jdbcType=INTEGER}, #{bossId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
+      #{ownerName,jdbcType=VARCHAR}, #{ownerPhoneNumber,jdbcType=VARCHAR}, #{payeeName,jdbcType=VARCHAR},
+      #{payeePhoneNumber,jdbcType=VARCHAR}, #{contractStartTime,jdbcType=TIMESTAMP},
+      #{contractEndTime,jdbcType=TIMESTAMP}, #{rentedType,jdbcType=BIT}, #{creatorName,jdbcType=VARCHAR},
+      #{updatorName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjh.fangdichanhaixia.pojo.HouseInfoDO" >
+    insert into house_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bossId != null" >
+        boss_id,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="ownerName != null" >
+        owner_name,
+      </if>
+      <if test="ownerPhoneNumber != null" >
+        owner_phone_number,
+      </if>
+      <if test="payeeName != null" >
+        payee_name,
+      </if>
+      <if test="payeePhoneNumber != null" >
+        payee_phone_number,
+      </if>
+      <if test="contractStartTime != null" >
+        contract_start_time,
+      </if>
+      <if test="contractEndTime != null" >
+        contract_end_time,
+      </if>
+      <if test="rentedType != null" >
+        rented_type,
+      </if>
+      <if test="creatorName != null" >
+        creator_name,
+      </if>
+      <if test="updatorName != null" >
+        updator_name,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bossId != null" >
+        #{bossId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhoneNumber != null" >
+        #{ownerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeName != null" >
+        #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeePhoneNumber != null" >
+        #{payeePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStartTime != null" >
+        #{contractStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndTime != null" >
+        #{contractEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rentedType != null" >
+        #{rentedType,jdbcType=BIT},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatorName != null" >
+        #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjh.fangdichanhaixia.pojo.HouseInfoDO" >
+    update house_info
+    <set >
+      <if test="bossId != null" >
+        boss_id = #{bossId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        owner_name = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhoneNumber != null" >
+        owner_phone_number = #{ownerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeName != null" >
+        payee_name = #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeePhoneNumber != null" >
+        payee_phone_number = #{payeePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStartTime != null" >
+        contract_start_time = #{contractStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndTime != null" >
+        contract_end_time = #{contractEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rentedType != null" >
+        rented_type = #{rentedType,jdbcType=BIT},
+      </if>
+      <if test="creatorName != null" >
+        creator_name = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updatorName != null" >
+        updator_name = #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjh.fangdichanhaixia.pojo.HouseInfoDO" >
+    update house_info
+    set boss_id = #{bossId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
+      owner_phone_number = #{ownerPhoneNumber,jdbcType=VARCHAR},
+      payee_name = #{payeeName,jdbcType=VARCHAR},
+      payee_phone_number = #{payeePhoneNumber,jdbcType=VARCHAR},
+      contract_start_time = #{contractStartTime,jdbcType=TIMESTAMP},
+      contract_end_time = #{contractEndTime,jdbcType=TIMESTAMP},
+      rented_type = #{rentedType,jdbcType=BIT},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      updator_name = #{updatorName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

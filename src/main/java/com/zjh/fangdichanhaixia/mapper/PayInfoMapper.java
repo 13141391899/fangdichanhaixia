@@ -8,11 +8,6 @@ import java.util.List;
  * @author Zhao JianHong
  * @date 2020/12/21
  */
-public interface RoomInfoMapper {
+public interface PayInfoMapper {
   List<RoomInfoDO> getAllRoomInfo();
-
-  /**
-   * asd
-   */
-  void getAllRoomInfo1();
 }
