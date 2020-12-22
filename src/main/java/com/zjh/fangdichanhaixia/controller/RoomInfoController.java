@@ -1,6 +1,6 @@
 package com.zjh.fangdichanhaixia.controller;
 
-import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
+import com.zjh.fangdichanhaixia.enums.RoomInfoDO;
 import com.zjh.fangdichanhaixia.service.RoomInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
