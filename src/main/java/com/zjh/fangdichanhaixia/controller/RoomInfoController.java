@@ -17,12 +17,14 @@ import java.util.List;
 @RequestMapping("roomInfo")
 @Slf4j
 public class RoomInfoController {
-
   @Autowired
   RoomInfoService roomInfoService;
   @ApiOperation("getAllRoomInfo")
   @PostMapping("getAllRoomInfo")
   public List<RoomInfoDO> testController(String value) {
+    log.info("6666666666666");
+    log.debug("6666666666666");
+    log.error("6666666666666");
     return roomInfoService.getAllRoomInfo();
   }
 }
