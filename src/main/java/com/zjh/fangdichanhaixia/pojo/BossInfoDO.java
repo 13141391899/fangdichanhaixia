@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BossInfoDO {
+public class BossInfoDO extends BaseDO{
 
   /**
    * 主键id  老板id
@@ -33,9 +33,4 @@ public class BossInfoDO {
    * 老板手机号
    */
   private String phoneNumber;
-
-  /**
-   * 是否已删除标志 0未删除  1已删除
-   */
-  private Integer isDeleted;
 }

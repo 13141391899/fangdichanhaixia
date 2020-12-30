@@ -1,5 +1,14 @@
 package com.zjh.fangdichanhaixia.utils;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Result<T> {
     private static final Integer STATUS_SUCCESS = 1;
     private final Integer STATUS_FAILURE = 1;
@@ -21,30 +30,5 @@ public class Result<T> {
         result.setContent(content);
         result.setStatus(STATUS_FAILURE);
         return result;
-    }
-
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
     }
 }

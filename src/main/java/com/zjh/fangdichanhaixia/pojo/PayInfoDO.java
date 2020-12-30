@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PayInfoDO {
+public class PayInfoDO extends BaseDO{
 
   /**
    * 主键id
@@ -81,8 +81,4 @@ public class PayInfoDO {
    */
   private String updateTime;
 
-  /**
-   * 是否已删除  0未删除  1已删除
-   */
-  private Integer isDeleted;
 }

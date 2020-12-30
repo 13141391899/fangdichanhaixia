@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoomInfoDO {
+public class RoomInfoDO extends BaseDO{
 
   /**
    * 主键id
@@ -79,9 +79,5 @@ public class RoomInfoDO {
    */
   private String updateTime;
 
-  /**
-   * 是否已删除 0未删除  1已删除
-   */
-  private Integer isDeleted;
 
 }
