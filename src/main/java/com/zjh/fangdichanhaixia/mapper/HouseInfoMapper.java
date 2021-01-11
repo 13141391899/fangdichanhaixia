@@ -1,5 +1,6 @@
 package com.zjh.fangdichanhaixia.mapper;
 
+import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
 
 import java.util.List;
@@ -9,5 +10,12 @@ import java.util.List;
  * @date 2020/12/21
  */
 public interface HouseInfoMapper {
-  List<RoomInfoDO> getAllRoomInfo();
-}
+  List<HouseInfoDO> selectByPage(HouseInfoDO houseInfoDO);
+
+  void add(HouseInfoDO houseInfoDO);
+
+  void deleteBatch(List<Integer> houseIds);
+
+  void update(HouseInfoDO houseInfoDO);
+
+  HouseInfoDO selectById(Integer houseId);}

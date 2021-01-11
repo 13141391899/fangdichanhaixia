@@ -10,90 +10,54 @@
   <sql id="Base_Column_List">
     id, name, phone_number, is_deleted
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-    select
-    <include refid="Base_Column_List"/>
-    from boss_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
   <select id="selectByPage" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from boss_info
     <where>
-      <if test="id != null" >
+      <if test="id != null">
         and id = #{id},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         and name = #{name},
       </if>
-      <if test="phoneNumber != null" >
-        and phone_number = #{phoneNumber},,
+      <if test="phoneNumber != null">
+        and phone_number = #{phoneNumber},
       </if>
-        and is_deleted =0
+      and is_deleted =0
     </where>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from boss_info
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zjh.fangdichanhaixia.pojo.BossInfoDO">
-    insert into boss_info (id, name, phone_number,
-      is_deleted)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR},
-      #{isDeleted,jdbcType=BIT})
+  <select id="selectById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from boss_info where id = #{id} and is_deleted = 0
+
+  </select>
+  <update id="deleteBatch">
+    update boss_info set is_deleted = 1 where id in
+    <foreach collection="bossIds" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and is_deleted = 0
+  </update>
+
+
+  <insert id="add">
+    insert into boss_info (name, phone_number,is_deleted)
+    values (#{name}, #{phoneNumber},0)
   </insert>
-  <insert id="insertSelective" parameterType="com.zjh.fangdichanhaixia.pojo.BossInfoDO">
-    insert into boss_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="phoneNumber != null">
-        phone_number,
-      </if>
-      <if test="isDeleted != null">
-        is_deleted,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="phoneNumber != null">
-        #{phoneNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=BIT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zjh.fangdichanhaixia.pojo.BossInfoDO">
+
+
+  <update id="update">
     update boss_info
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        name = #{name},
       </if>
       <if test="phoneNumber != null">
-        phone_number = #{phoneNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=BIT},
+        phone_number = #{phoneNumber},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zjh.fangdichanhaixia.pojo.BossInfoDO">
-    update boss_info
-    set name = #{name,jdbcType=VARCHAR},
-      phone_number = #{phoneNumber,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id} and is_deleted = 0
   </update>
 </mapper>

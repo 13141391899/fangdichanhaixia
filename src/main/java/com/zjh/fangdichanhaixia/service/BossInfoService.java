@@ -26,4 +26,20 @@ public class BossInfoService {
     Page<BossInfoDO> page = (Page<BossInfoDO>) bossInfoMapper.selectByPage(bossInfoDO);
     return new PageList<>(page);
   }
+
+  public void add(BossInfoDO bossInfoDO) {
+    bossInfoMapper.add(bossInfoDO);
+  }
+
+  public void deleteBatch(List<Integer> bossIds) {
+    bossInfoMapper.deleteBatch(bossIds);
+  }
+
+  public void update(BossInfoDO bossInfoDO) {
+    bossInfoMapper.update(bossInfoDO);
+  }
+
+  public BossInfoDO selectById(Integer bossId) {
+    return bossInfoMapper.selectById(bossId);
+  }
 }

@@ -28,10 +28,7 @@ public class BossInfoController {
   public Result<String> add(BossInfoDO bossInfoDO) {
     Result<String> result = new Result().failure("新增老板信息 失败", "新增老板信息 失败");
     try {
-      if (1 > 1) {
-        result.setMsg("我是错误提示语");
-        return result;
-      }
+     bossInfoService.add(bossInfoDO);
       return new Result().success("新增老板信息 成功", "新增老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
@@ -45,10 +42,7 @@ public class BossInfoController {
   public Result<String> deleteBatch(List<Integer> bossIds) {
     Result<String> result = new Result().failure("批量删除老板信息 失败", "批量删除老板信息 失败");
     try {
-      if (1 > 1) {
-        result.setMsg("我是错误提示语");
-        return result;
-      }
+      bossInfoService.deleteBatch(bossIds);
       return new Result().success("批量删除老板信息 成功", "批量删除老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
@@ -66,6 +60,7 @@ public class BossInfoController {
         result.setMsg("我是错误提示语");
         return result;
       }
+      bossInfoService.update(bossInfoDO);
       return new Result().success("修改老板信息 成功", "修改老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
@@ -76,14 +71,15 @@ public class BossInfoController {
 
   @ApiOperation("单个查询老板信息")
   @PostMapping("selectById")
-  public Result<String> selectById(Integer bossId) {
-    Result<String> result = new Result().failure("单个查询老板信息 失败", "单个查询老板信息 失败");
+  public Result<BossInfoDO> selectById(Integer bossId) {
+    Result<BossInfoDO> result = new Result().failure("单个查询老板信息 失败", "单个查询老板信息 失败");
     try {
       if (1 > 1) {
         result.setMsg("我是错误提示语");
         return result;
       }
-      return new Result().success("单个查询老板信息 成功", "单个查询老板信息 成功");
+      BossInfoDO bossInfoDO =  bossInfoService.selectById(bossId);
+      return new Result().success(bossInfoDO, "单个查询老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
       result.setMsg(e.getMessage());

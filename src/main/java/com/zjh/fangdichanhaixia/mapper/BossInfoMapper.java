@@ -11,4 +11,13 @@ import java.util.List;
  */
 public interface BossInfoMapper {
   List<BossInfoDO> selectByPage(BossInfoDO bossInfoDO);
+
+  void add(BossInfoDO bossInfoDO);
+
+  void deleteBatch(List<Integer> bossIds);
+
+  void update(BossInfoDO bossInfoDO);
+
+  BossInfoDO selectById(Integer bossId);
+
 }

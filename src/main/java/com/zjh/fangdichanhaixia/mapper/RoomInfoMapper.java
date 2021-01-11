@@ -9,10 +9,13 @@ import java.util.List;
  * @date 2020/12/21
  */
 public interface RoomInfoMapper {
-  List<RoomInfoDO> getAllRoomInfo();
 
-  /**
-   * asd
-   */
-  void getAllRoomInfo1();
-}
+  List<RoomInfoDO> selectByPage(RoomInfoDO roomInfoDO);
+
+  void add(RoomInfoDO roomInfoDO);
+
+  void deleteBatch(List<Integer> roomIds);
+
+  void update(RoomInfoDO roomInfoDO);
+
+  RoomInfoDO selectById(Integer roomId);}

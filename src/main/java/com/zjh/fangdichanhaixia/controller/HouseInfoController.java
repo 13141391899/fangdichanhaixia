@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@Api(value = "房源信息Controller")
+@Api(value = "房源信息Controller",tags = "房源信息Controller")
 @RequestMapping("houseInfo")
 @Slf4j
 public class HouseInfoController {
