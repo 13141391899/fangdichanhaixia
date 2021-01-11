@@ -66,7 +66,7 @@
     select
     <include refid="Base_Column_List"/>
     from pay_info
-    where id = #{id}and is_deleted = 0
+    where id = #{id}  and is_deleted = 0
 
   </select>
   <update id="deleteBatch">
@@ -79,12 +79,12 @@
 
 
   <insert id="add">
-    insert into pay_info (id, pay_type, remarks,
+    insert into pay_info (pay_type, remarks,
       house_id, room_id, expect_pay_time,
       real_pay_time, pay_amount, pay_status,
       creator_name, create_time,updator_name, update_time,
       is_deleted)
-    values (#{id}, #{payType}, #{remarks},
+    values (#{payType}, #{remarks},
       #{houseId}, #{roomId}, #{expectPayTime},
       #{realPayTime}, #{payAmount,jdbcType=DECIMAL}, #{payStatus},
       #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},

@@ -26,7 +26,7 @@ public class BossInfoController {
 
   @ApiOperation("新增老板信息")
   @PostMapping("add")
-  public Result<String> add(BossInfoDO bossInfoDO) {
+  public Result<String> add(@RequestBody BossInfoDO bossInfoDO) {
     Result<String> result = new Result().failure("新增老板信息 失败", "新增老板信息 失败");
     try {
      bossInfoService.add(bossInfoDO);
@@ -54,7 +54,7 @@ public class BossInfoController {
 
   @ApiOperation("修改老板信息")
   @PostMapping("update")
-  public Result<String> update(BossInfoDO bossInfoDO) {
+  public Result<String> update(@RequestBody BossInfoDO bossInfoDO) {
     Result<String> result = new Result().failure("修改老板信息 失败", "修改老板信息 失败");
     try {
       if (1 > 1) {
@@ -72,7 +72,7 @@ public class BossInfoController {
 
   @ApiOperation("单个查询老板信息")
   @PostMapping("selectById")
-  public Result<BossInfoDO> selectById(Integer bossId) {
+  public Result<BossInfoDO> selectById(@RequestBody Integer bossId) {
     Result<BossInfoDO> result = new Result().failure("单个查询老板信息 失败", "单个查询老板信息 失败");
     try {
       if (1 > 1) {
@@ -90,7 +90,7 @@ public class BossInfoController {
 
   @ApiOperation("分页查询老板信息")
   @PostMapping("selectByPage")
-  public Result<PageList<BossInfoDO>> selectByPage(BossInfoDO bossInfoDO) {
+  public Result<PageList<BossInfoDO>> selectByPage(@RequestBody BossInfoDO bossInfoDO) {
     Result<PageList<BossInfoDO>> result = new Result().failure("分页查询老板信息 失败", "分页查询老板信息 失败");
     try {
       if (1 > 1) {

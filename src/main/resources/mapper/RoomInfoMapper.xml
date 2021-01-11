@@ -70,7 +70,7 @@
   <select id="selectById" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
-    from room_info where id = #{id} and is_deleted = 0
+    from room_info where id = #{id}   and is_deleted = 0
 
   </select>
   <update id="deleteBatch">
@@ -83,12 +83,12 @@
 
 
   <insert id="add">
-    insert into room_info (id, house_id, name,
+    insert into room_info (house_id, name,
       rented_status, rent_people_name, rent_people_phone_number,
       payor_type, contract_start_time, contract_end_time,
       creator_name, create_time, updator_name, update_time,
       is_deleted)
-    values (#{id}, #{houseId}, #{name},
+    values (#{houseId}, #{name},
       #{rentedStatus}, #{rentPeopleName}, #{rentPeoplePhoneNumber},
       #{payorType}, #{contractStartTime}, #{contractEndTime},
       #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},0)
