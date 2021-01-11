@@ -18,7 +18,7 @@ public class Result<T> {
 
     public Result success(T content, String msg) {
         Result<T> result = new Result<>();
-        result.setMsg(msg + " 请求成功");
+        result.setMsg(msg);
         result.setContent(content);
         result.setStatus(STATUS_SUCCESS);
         return result;
@@ -26,7 +26,7 @@ public class Result<T> {
 
     public Result failure(T content, String msg) {
         Result<T> result = new Result<>();
-        result.setMsg(msg + " 请求失败");
+        result.setMsg(msg);
         result.setContent(content);
         result.setStatus(STATUS_FAILURE);
         return result;

@@ -5,10 +5,15 @@
     <id column="id" property="id" jdbcType="INTEGER"/>
     <result column="name" property="name" jdbcType="VARCHAR"/>
     <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR"/>
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT"/>
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR"/>
+    <result column="updator_name" property="updatorName" jdbcType="VARCHAR"/>
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, phone_number, is_deleted
+    id, name, phone_number,  creator_name, create_time,updator_name,
+    update_time,is_deleted
   </sql>
   <select id="selectByPage" resultMap="BaseResultMap">
     select
@@ -43,8 +48,9 @@
 
 
   <insert id="add">
-    insert into boss_info (name, phone_number,is_deleted)
-    values (#{name}, #{phoneNumber},0)
+    insert into boss_info (name, phone_number,creator_name, create_time,updator_name,
+    update_time,is_deleted)
+    values (#{name}, #{phoneNumber}, #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},0)
   </insert>
 
 

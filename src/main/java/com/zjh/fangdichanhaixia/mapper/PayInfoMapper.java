@@ -2,6 +2,7 @@ package com.zjh.fangdichanhaixia.mapper;
 
 import com.zjh.fangdichanhaixia.pojo.PayInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface PayInfoMapper {
 
   void add(PayInfoDO payInfoDO);
 
-  void deleteBatch(List<Integer> payIds);
+  void deleteBatch(@Param("payIds")List<Integer> payIds);
 
   void update(PayInfoDO payInfoDO);
 

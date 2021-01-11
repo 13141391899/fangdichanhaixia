@@ -2,6 +2,7 @@ package com.zjh.fangdichanhaixia.mapper;
 
 import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface HouseInfoMapper {
 
   void add(HouseInfoDO houseInfoDO);
 
-  void deleteBatch(List<Integer> houseIds);
+  void deleteBatch(@Param("houseIds")List<Integer> houseIds);
 
   void update(HouseInfoDO houseInfoDO);
 

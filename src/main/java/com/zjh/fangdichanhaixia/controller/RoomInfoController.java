@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class RoomInfoController {
   @ApiOperation("新增房间信息")
   @PostMapping("add")
-  public Result<String> add(RoomInfoDO roomInfoDO) {
+  public Result<String> add(@RequestBody RoomInfoDO roomInfoDO) {
     Result<String> result = new Result().failure("新增房间信息 失败", "新增房间信息 失败");
     try {
       if (1 > 1) {
@@ -35,7 +36,7 @@ public class RoomInfoController {
 
   @ApiOperation("批量删除房间信息")
   @PostMapping("deleteBatch")
-  public Result<String> deleteBatch(List<Integer> payIds) {
+  public Result<String> deleteBatch(@RequestBody List<Integer> payIds) {
     Result<String> result = new Result().failure("批量删除房间信息 失败", "批量删除房间信息 失败");
     try {
       if (1 > 1) {
@@ -52,7 +53,7 @@ public class RoomInfoController {
 
   @ApiOperation("修改房间信息")
   @PostMapping("update")
-  public Result<String> update(RoomInfoDO roomInfoDO) {
+  public Result<String> update(@RequestBody RoomInfoDO roomInfoDO) {
     Result<String> result = new Result().failure("修改房间信息 失败", "修改房间信息 失败");
     try {
       if (1 > 1) {
@@ -69,7 +70,7 @@ public class RoomInfoController {
 
   @ApiOperation("单个查询房间信息")
   @PostMapping("selectById")
-  public Result<String> selectById(Integer payId) {
+  public Result<String> selectById(@RequestBody Integer payId) {
     Result<String> result = new Result().failure("单个查询房间信息 失败", "单个查询房间信息 失败");
     try {
       if (1 > 1) {
@@ -86,7 +87,7 @@ public class RoomInfoController {
 
   @ApiOperation("分页查询房间信息")
   @PostMapping("selectByPage")
-  public Result<String> selectByPage(RoomInfoDO roomInfoDO) {
+  public Result<String> selectByPage(@RequestBody RoomInfoDO roomInfoDO) {
     Result<String> result = new Result().failure("分页查询房间信息 失败", "分页查询房间信息 失败");
     try {
       if (1 > 1) {

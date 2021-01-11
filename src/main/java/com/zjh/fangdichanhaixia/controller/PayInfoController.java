@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class PayInfoController {
   @ApiOperation("新增支付信息")
   @PostMapping("add")
-  public Result<String> add(PayInfoDO payInfoDO) {
+  public Result<String> add(@RequestBody PayInfoDO payInfoDO) {
     Result<String> result = new Result().failure("新增支付信息 失败", "新增支付信息 失败");
     try {
       if (1 > 1) {
@@ -35,7 +36,7 @@ public class PayInfoController {
 
   @ApiOperation("批量删除支付信息")
   @PostMapping("deleteBatch")
-  public Result<String> deleteBatch(List<Integer> payIds) {
+  public Result<String> deleteBatch(@RequestBody List<Integer> payIds) {
     Result<String> result = new Result().failure("批量删除支付信息 失败", "批量删除支付信息 失败");
     try {
       if (1 > 1) {
@@ -52,7 +53,7 @@ public class PayInfoController {
 
   @ApiOperation("修改支付信息")
   @PostMapping("update")
-  public Result<String> update(PayInfoDO payInfoDO) {
+  public Result<String> update(@RequestBody PayInfoDO payInfoDO) {
     Result<String> result = new Result().failure("修改支付信息 失败", "修改支付信息 失败");
     try {
       if (1 > 1) {
@@ -69,7 +70,7 @@ public class PayInfoController {
 
   @ApiOperation("单个查询支付信息")
   @PostMapping("selectById")
-  public Result<String> selectById(Integer payId) {
+  public Result<String> selectById(@RequestBody Integer payId) {
     Result<String> result = new Result().failure("单个查询支付信息 失败", "单个查询支付信息 失败");
     try {
       if (1 > 1) {
@@ -86,7 +87,7 @@ public class PayInfoController {
 
   @ApiOperation("分页查询支付信息")
   @PostMapping("selectByPage")
-  public Result<String> selectByPage(PayInfoDO payInfoDO) {
+  public Result<String> selectByPage(@RequestBody PayInfoDO payInfoDO) {
     Result<String> result = new Result().failure("分页查询支付信息 失败", "分页查询支付信息 失败");
     try {
       if (1 > 1) {
