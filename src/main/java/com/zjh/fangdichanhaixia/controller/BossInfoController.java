@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +40,7 @@ public class BossInfoController {
 
   @ApiOperation("批量删除老板信息")
   @PostMapping("deleteBatch")
-  public Result<String> deleteBatch(List<Integer> bossIds) {
+  public Result<String> deleteBatch(@RequestBody List<Integer> bossIds) {
     Result<String> result = new Result().failure("批量删除老板信息 失败", "批量删除老板信息 失败");
     try {
       bossInfoService.deleteBatch(bossIds);

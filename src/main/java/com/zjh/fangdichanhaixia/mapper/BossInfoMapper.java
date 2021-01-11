@@ -2,6 +2,7 @@ package com.zjh.fangdichanhaixia.mapper;
 
 import com.zjh.fangdichanhaixia.pojo.BossInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface BossInfoMapper {
 
   void add(BossInfoDO bossInfoDO);
 
-  void deleteBatch(List<Integer> bossIds);
+  void deleteBatch(@Param("bossIds") List<Integer> bossIds);
 
   void update(BossInfoDO bossInfoDO);
 
