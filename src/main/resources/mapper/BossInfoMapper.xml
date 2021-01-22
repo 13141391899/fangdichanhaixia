@@ -21,13 +21,13 @@
     from boss_info
     <where>
       <if test="id != null">
-        and id = #{id},
+        and id = #{id}
       </if>
       <if test="name != null">
-        and name = #{name},
+        and name = #{name}
       </if>
       <if test="phoneNumber != null">
-        and phone_number = #{phoneNumber},
+        and phone_number = #{phoneNumber}
       </if>
       and is_deleted =0
     </where>
