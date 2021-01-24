@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+
 @RestController
 @Api(value = "房源信息Controller",tags = "房源信息Controller")
 @RequestMapping("houseInfo")
@@ -29,14 +31,15 @@ public class HouseInfoController {
     Result<String> result = new Result().failure("新增房源信息 失败", "新增房源信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+
+        result.setMessage("我是错误提示语");
         return result;
       }
       houseInfoService.add(houseInfoDO);
       return new Result().success("新增房源信息 成功", "新增房源信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -47,14 +50,14 @@ public class HouseInfoController {
     Result<String> result = new Result().failure("批量删除房源信息 失败", "批量删除房源信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       houseInfoService.deleteBatch(houseIds);
       return new Result().success("批量删除房源信息 成功", "批量删除房源信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -65,14 +68,14 @@ public class HouseInfoController {
     Result<String> result = new Result().failure("修改房源信息 失败", "修改房源信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       houseInfoService.update(houseInfoDO);
       return new Result().success("修改房源信息 成功", "修改房源信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -83,14 +86,14 @@ public class HouseInfoController {
     Result<HouseInfoDO> result = new Result().failure("单个查询房源信息 失败", "单个查询房源信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       HouseInfoDO houseInfoDO = houseInfoService.selectById(houseId);
       return new Result().success(houseInfoDO, "单个查询房源信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -101,14 +104,14 @@ public class HouseInfoController {
     Result<PageList<HouseInfoDO>> result = new Result().failure("分页查询房源信息 失败", "分页查询房源信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       PageList<HouseInfoDO> pageList = houseInfoService.selectByPage(houseInfoDO);
       return new Result().success(pageList, "分页查询房源信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }

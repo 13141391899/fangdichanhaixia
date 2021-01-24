@@ -33,7 +33,7 @@ public class BossInfoController {
       return new Result().success("新增老板信息 成功", "新增老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -47,7 +47,7 @@ public class BossInfoController {
       return new Result().success("批量删除老板信息 成功", "批量删除老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -58,14 +58,14 @@ public class BossInfoController {
     Result<String> result = new Result().failure("修改老板信息 失败", "修改老板信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       bossInfoService.update(bossInfoDO);
       return new Result().success("修改老板信息 成功", "修改老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -76,14 +76,14 @@ public class BossInfoController {
     Result<BossInfoDO> result = new Result().failure("单个查询老板信息 失败", "单个查询老板信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       BossInfoDO bossInfoDO =  bossInfoService.selectById(bossId);
       return new Result().success(bossInfoDO, "单个查询老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -94,14 +94,14 @@ public class BossInfoController {
     Result<PageList<BossInfoDO>> result = new Result().failure("分页查询老板信息 失败", "分页查询老板信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       PageList<BossInfoDO> pageList = bossInfoService.selectByPage(bossInfoDO);
       return new Result().success(pageList, "分页查询老板信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }

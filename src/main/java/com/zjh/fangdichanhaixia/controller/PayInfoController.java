@@ -30,14 +30,14 @@ public class PayInfoController {
     Result<String> result = new Result().failure("新增支付信息 失败", "新增支付信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       payInfoService.add(payInfoDO);
       return new Result().success("新增支付信息 成功", "新增支付信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -48,14 +48,14 @@ public class PayInfoController {
     Result<String> result = new Result().failure("批量删除支付信息 失败", "批量删除支付信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       payInfoService.deleteBatch(payIds);
       return new Result().success("批量删除支付信息 成功", "批量删除支付信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -66,14 +66,14 @@ public class PayInfoController {
     Result<String> result = new Result().failure("修改支付信息 失败", "修改支付信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       payInfoService.update(payInfoDO);
       return new Result().success("修改支付信息 成功", "修改支付信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -84,14 +84,14 @@ public class PayInfoController {
     Result<PayInfoDO> result = new Result().failure("单个查询支付信息 失败", "单个查询支付信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       PayInfoDO payInfoDO =  payInfoService.selectById(payId);
       return new Result().success(payInfoDO, "单个查询支付信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -102,14 +102,14 @@ public class PayInfoController {
     Result<PageList<PayInfoDO>> result = new Result().failure("分页查询支付信息 失败", "分页查询支付信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
      PageList<PayInfoDO> pageList =  payInfoService.selectByPage(payInfoDO);
       return new Result().success(pageList, "分页查询支付信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }

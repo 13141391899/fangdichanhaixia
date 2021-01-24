@@ -28,14 +28,14 @@ public class RoomInfoController {
     Result<String> result = new Result().failure("新增房间信息 失败", "新增房间信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       roomInfoService.add(roomInfoDO);
       return new Result().success("新增房间信息 成功", "新增房间信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -46,14 +46,14 @@ public class RoomInfoController {
     Result<String> result = new Result().failure("批量删除房间信息 失败", "批量删除房间信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       roomInfoService.deleteBatch(payIds);
       return new Result().success("批量删除房间信息 成功", "批量删除房间信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -64,14 +64,14 @@ public class RoomInfoController {
     Result<String> result = new Result().failure("修改房间信息 失败", "修改房间信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       roomInfoService.update(roomInfoDO);
       return new Result().success("修改房间信息 成功", "修改房间信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -82,14 +82,14 @@ public class RoomInfoController {
     Result<RoomInfoDO> result = new Result().failure("单个查询房间信息 失败", "单个查询房间信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       RoomInfoDO roomInfoDO = roomInfoService.selectById(payId);
       return new Result().success(roomInfoDO, "单个查询房间信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
@@ -100,14 +100,14 @@ public class RoomInfoController {
     Result<PageList<RoomInfoDO>> result = new Result().failure("分页查询房间信息 失败", "分页查询房间信息 失败");
     try {
       if (1 > 1) {
-        result.setMsg("我是错误提示语");
+        result.setMessage("我是错误提示语");
         return result;
       }
       PageList<RoomInfoDO> pageList = roomInfoService.selectByPage(roomInfoDO);
       return new Result().success(pageList, "分页查询房间信息 成功");
     } catch (Exception e) {
       e.printStackTrace();
-      result.setMsg(e.getMessage());
+      result.setMessage(e.getMessage());
       return result;
     }
   }
