@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,10 +32,12 @@ public class HouseInfoController {
     Result<String> result = new Result().failure("新增房源信息 失败", "新增房源信息 失败");
     try {
       if (1 > 1) {
-
         result.setMessage("我是错误提示语");
         return result;
       }
+      houseInfoDO.setCreatorName("王海霞");
+      houseInfoDO.setUpdatorName("王海霞");
+      houseInfoDO.setUpdateTime(new Date());
       houseInfoService.add(houseInfoDO);
       return new Result().success("新增房源信息 成功", "新增房源信息 成功");
     } catch (Exception e) {

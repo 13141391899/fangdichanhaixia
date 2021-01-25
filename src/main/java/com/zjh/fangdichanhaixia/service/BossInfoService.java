@@ -10,6 +10,7 @@ import com.zjh.fangdichanhaixia.utils.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,6 +29,9 @@ public class BossInfoService {
   }
 
   public void add(BossInfoDO bossInfoDO) {
+    bossInfoDO.setCreatorName("王海霞");
+    bossInfoDO.setUpdatorName("王海霞");
+    bossInfoDO.setUpdateTime(new Date());
     bossInfoMapper.add(bossInfoDO);
   }
 
