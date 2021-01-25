@@ -17,11 +17,15 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     <result column="is_deleted" property="isDeleted" jdbcType="INTEGER"/>
+    <result column="contract_code" property="contractCode" jdbcType="INTEGER"/>
+    <result column="payor_type" property="payorType" jdbcType="INTEGER"/>
+    <result column="payee_account" property="payeeAccount" jdbcType="INTEGER"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, boss_id, address, owner_name, owner_phone_number, payee_name, payee_phone_number,
+    id
+    , boss_id, address, owner_name, owner_phone_number, payee_name, payee_phone_number,
     contract_start_time, contract_end_time, rented_type, creator_name, create_time,updator_name,
-    update_time, is_deleted
+    update_time, is_deleted,contract_code,payor_type,payee_account
   </sql>
 
   <select id="selectByPage" resultMap="BaseResultMap">
@@ -30,40 +34,49 @@
     from house_info
     <where>
       <if test="bossId != null">
-        boss_id = #{bossId},
+        boss_id = #{bossId}
       </if>
       <if test="address != null">
-        address = #{address},
+        address = #{address}
       </if>
       <if test="ownerName != null">
-        owner_name = #{ownerName},
+        owner_name = #{ownerName}
       </if>
       <if test="ownerPhoneNumber != null">
-        owner_phone_number = #{ownerPhoneNumber},
+        owner_phone_number = #{ownerPhoneNumber}
       </if>
       <if test="payeeName != null">
-        payee_name = #{payeeName},
+        payee_name = #{payeeName}
       </if>
       <if test="payeePhoneNumber != null">
-        payee_phone_number = #{payeePhoneNumber},
+        payee_phone_number = #{payeePhoneNumber}
       </if>
       <if test="contractStartTime != null">
-        contract_start_time = #{contractStartTime},
+        contract_start_time = #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        contract_end_time = #{contractEndTime},
+        contract_end_time = #{contractEndTime}
       </if>
       <if test="rentedType != null">
-        rented_type = #{rentedType},
+        rented_type = #{rentedType}
       </if>
       <if test="creatorName != null">
-        creator_name = #{creatorName},
+        creator_name = #{creatorName}
       </if>
       <if test="updatorName != null">
-        updator_name = #{updatorName},
+        updator_name = #{updatorName}
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime},
+        update_time = #{updateTime}
+      </if>
+      <if test="contractCode != null">
+        contract_code = #{contractCode}
+      </if>
+      <if test="payorType != null">
+        payor_type = #{payorType}
+      </if>
+      <if test="payeeAccount != null">
+        payee_account = #{payeeAccount}
       </if>
       and is_deleted =0
     </where>
@@ -86,17 +99,15 @@
 
   <insert id="add">
     insert into house_info (boss_id, address,
-      owner_name, owner_phone_number, payee_name,
-      payee_phone_number, contract_start_time,
-      contract_end_time, rented_type, creator_name,create_time,
-      updator_name, update_time, is_deleted
-      )
+                            owner_name, owner_phone_number, payee_name,
+                            payee_phone_number, contract_start_time,
+                            contract_end_time, contract_code, payor_type, payee_account, rented_type, creator_name, create_time,
+                            updator_name, update_time, is_deleted)
     values (#{bossId}, #{address},
-      #{ownerName}, #{ownerPhoneNumber}, #{payeeName},
-      #{payeePhoneNumber}, #{contractStartTime},
-      #{contractEndTime}, #{rentedType}, #{creatorName},#{createTime},
-      #{updatorName}, #{updateTime}, 0
-      )
+            #{ownerName}, #{ownerPhoneNumber}, #{payeeName},
+            #{payeePhoneNumber}, #{contractStartTime}, #{contractEndTime}, #{contractCode}, #{payorType}, #{payeeAccount},
+            #{rentedType}, #{creatorName}, #{createTime},
+            #{updatorName}, #{updateTime}, 0)
   </insert>
 
 
@@ -141,6 +152,15 @@
       </if>
       <if test="isDeleted != null">
         is_deleted = #{isDeleted},
+      </if>
+      <if test="contractCode != null">
+        contract_code = #{contractCode},
+      </if>
+      <if test="payorType != null">
+        payor_type = #{payorType},
+      </if>
+      <if test="payeeAccount != null">
+        payee_account = #{payeeAccount},
       </if>
     </set>
     where id = #{id} and is_deleted = 0

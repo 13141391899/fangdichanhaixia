@@ -29,40 +29,40 @@
     from room_info
     <where>
       <if test="houseId != null">
-        house_id = #{houseId},
+        house_id = #{houseId}
       </if>
       <if test="name != null">
-        name = #{name},
+        name = #{name}
       </if>
       <if test="rentedStatus != null">
-        rented_status = #{rentedStatus},
+        rented_status = #{rentedStatus}
       </if>
       <if test="rentPeopleName != null">
-        rent_people_name = #{rentPeopleName},
+        rent_people_name = #{rentPeopleName}
       </if>
       <if test="rentPeoplePhoneNumber != null">
-        rent_people_phone_number = #{rentPeoplePhoneNumber},
+        rent_people_phone_number = #{rentPeoplePhoneNumber}
       </if>
       <if test="payorType != null">
-        payor_type = #{payorType},
+        payor_type = #{payorType}
       </if>
       <if test="contractStartTime != null">
-        contract_start_time = #{contractStartTime},
+        contract_start_time = #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        contract_end_time = #{contractEndTime},
+        contract_end_time = #{contractEndTime}
       </if>
       <if test="creatorName != null">
-        creator_name = #{creatorName},
+        creator_name = #{creatorName}
       </if>
       <if test="updatorName != null">
-        updator_name = #{updatorName},
+        updator_name = #{updatorName}
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime},
+        update_time = #{updateTime}
       </if>
       <if test="isDeleted != null">
-        is_deleted = #{isDeleted},
+        is_deleted = #{isDeleted}
       </if>
       and is_deleted =0
     </where>
