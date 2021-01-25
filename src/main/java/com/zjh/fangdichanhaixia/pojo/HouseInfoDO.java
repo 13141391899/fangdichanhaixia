@@ -92,13 +92,19 @@ public class HouseInfoDO extends BaseDO{
    * 租住类型  1整租 2合租
    */
   @ApiModelProperty(value = "租住类型  1整租 2合租", example = "1")
-  private Integer rentedTypeStr;
+  private String rentedTypeStr;
 
   /**
    * 给房东付款类型 1年付  2半年付  3押一付三  4押一付一
    */
   @ApiModelProperty(value = "付款类型 1年付  2半年付  3押一付三  4押一付一", example = "1")
   private Integer payorType;
+
+  /**
+   * 给房东付款类型 1年付  2半年付  3押一付三  4押一付一
+   */
+  @ApiModelProperty(value = "付款类型 1年付  2半年付  3押一付三  4押一付一", example = "1")
+  private String payorTypeStr;
 
   /**
    * 合同编号

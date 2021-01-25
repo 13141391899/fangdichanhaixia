@@ -2,6 +2,7 @@ package com.zjh.fangdichanhaixia.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.zjh.fangdichanhaixia.enums.EnumInterface;
 import com.zjh.fangdichanhaixia.mapper.HouseInfoMapper;
 import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
 import com.zjh.fangdichanhaixia.utils.PageList;
@@ -22,6 +23,10 @@ public class HouseInfoService {
   public PageList<HouseInfoDO> selectByPage(HouseInfoDO houseInfoDO) {
     PageHelper.startPage(houseInfoDO.getPageNum(), houseInfoDO.getPageSize());
     Page<HouseInfoDO> page = (Page<HouseInfoDO>) houseInfoMapper.selectByPage(houseInfoDO);
+    page.getResult().forEach(item-> {
+      item.setRentedTypeStr(EnumInterface.RentType.getNameByCode(item.getRentedType()));
+      item.setPayorTypeStr(EnumInterface.PayRentType.getNameByCode(item.getPayorType()));
+    });
     return new PageList<>(page);
   }
 
