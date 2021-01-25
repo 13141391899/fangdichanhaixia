@@ -60,6 +60,7 @@ public class HouseInfoDO extends BaseDO{
   @ApiModelProperty(value = "收款人名称", example = "王老板")
   private String payeeName;
 
+
   /**
    * 收款人手机号
    */
@@ -94,6 +95,18 @@ public class HouseInfoDO extends BaseDO{
   private Integer rentedTypeStr;
 
   /**
+   * 给房东付款类型 1年付  2半年付  3押一付三  4押一付一
+   */
+  @ApiModelProperty(value = "付款类型 1年付  2半年付  3押一付三  4押一付一", example = "1")
+  private Integer payorType;
+
+  /**
+   * 合同编号
+   */
+  @ApiModelProperty(value = "合同编号  ", example = "奥术大师1")
+  private String contractCode;
+
+  /**
    * 创建人
    */
   @ApiModelProperty(value = "创建人", example = "创建人")
@@ -117,4 +130,10 @@ public class HouseInfoDO extends BaseDO{
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
   private Date createTime;
+
+  /**
+   * 收款账号
+   */
+  @ApiModelProperty(value = "21312312321312", example = "1")
+  private String payeeAccount;
 }
