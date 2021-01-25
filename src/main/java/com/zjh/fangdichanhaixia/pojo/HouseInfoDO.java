@@ -87,6 +87,11 @@ public class HouseInfoDO extends BaseDO{
    */
   @ApiModelProperty(value = "租住类型  1整租 2合租", example = "1")
   private Integer rentedType;
+  /**
+   * 租住类型  1整租 2合租
+   */
+  @ApiModelProperty(value = "租住类型  1整租 2合租", example = "1")
+  private Integer rentedTypeStr;
 
   /**
    * 创建人
