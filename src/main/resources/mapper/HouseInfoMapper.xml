@@ -106,8 +106,8 @@
     values (#{bossId}, #{address},
             #{ownerName}, #{ownerPhoneNumber}, #{payeeName},
             #{payeePhoneNumber}, #{contractStartTime}, #{contractEndTime}, #{contractCode}, #{payorType}, #{payeeAccount},
-            #{rentedType}, #{creatorName}, #{createTime},
-            #{updatorName}, #{updateTime}, 0)
+            #{rentedType}, #{creatorName}, now(),
+            #{updatorName}, now(), 0)
   </insert>
 
 

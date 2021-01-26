@@ -133,10 +133,10 @@ public interface EnumInterface {
    */
   enum PayRentType{
     //库存类型：0正品1残品2异常品3过期品
-    YUEFU(1, "月付"),
-    JIFU(2, "季付"),
-    BANNAINFU(3, "半年付"),
-    NIANFU(4, "年付");
+    YUEFU(1, "年付"),
+    JIFU(2, "半年付"),
+    BANNAINFU(3, "押一付三"),
+    NIANFU(4, "押一付一");
     /**
      * 编码
      */
