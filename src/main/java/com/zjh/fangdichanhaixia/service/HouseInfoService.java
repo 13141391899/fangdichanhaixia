@@ -8,6 +8,7 @@ import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
 import com.zjh.fangdichanhaixia.utils.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @date 2020/12/21
  */
 @Service
+@Transactional
 public class HouseInfoService {
   @Autowired
   private HouseInfoMapper houseInfoMapper;

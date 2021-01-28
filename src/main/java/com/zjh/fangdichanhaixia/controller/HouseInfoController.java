@@ -1,5 +1,6 @@
 package com.zjh.fangdichanhaixia.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
 import com.zjh.fangdichanhaixia.service.HouseInfoService;
 import com.zjh.fangdichanhaixia.utils.PageList;
@@ -17,18 +18,20 @@ import java.util.Date;
 import java.util.List;
 
 
-
 @RestController
-@Api(value = "房源信息Controller",tags = "房源信息Controller")
+@Api(value = "房源信息Controller", tags = "房源信息Controller")
 @RequestMapping("houseInfo")
 @Slf4j
 public class HouseInfoController {
 
   @Autowired
   HouseInfoService houseInfoService;
+
   @ApiOperation("新增房源信息")
   @PostMapping("add")
   public Result<String> add(@RequestBody HouseInfoDO houseInfoDO) {
+    log.info(" 新增房源信息 入参={}", JSONObject.toJSONString(houseInfoDO));
+
     Result<String> result = new Result().failure("新增房源信息 失败", "新增房源信息 失败");
     try {
       if (1 > 1) {
@@ -39,10 +42,13 @@ public class HouseInfoController {
       houseInfoDO.setUpdatorName("王海霞");
       houseInfoDO.setUpdateTime(new Date());
       houseInfoService.add(houseInfoDO);
-      return new Result().success("新增房源信息 成功", "新增房源信息 成功");
+      result = new Result().success("新增房源信息 成功", "新增房源信息 成功");
+      log.info(" 新增房源信息 出参={}", JSONObject.toJSONString(result));
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
       result.setMessage(e.getMessage());
+      log.error(" 新增房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
     }
   }
@@ -50,6 +56,8 @@ public class HouseInfoController {
   @ApiOperation("批量删除房源信息")
   @PostMapping("deleteBatch")
   public Result<String> deleteBatch(@RequestBody List<Integer> houseIds) {
+    log.info("批量删除房源信息 入参={}", JSONObject.toJSONString(houseIds));
+
     Result<String> result = new Result().failure("批量删除房源信息 失败", "批量删除房源信息 失败");
     try {
       if (1 > 1) {
@@ -57,10 +65,14 @@ public class HouseInfoController {
         return result;
       }
       houseInfoService.deleteBatch(houseIds);
-      return new Result().success("批量删除房源信息 成功", "批量删除房源信息 成功");
+      result = new Result().success("批量删除房源信息 成功", "批量删除房源信息 成功");
+      log.info("批量删除房源信息 出参={}", JSONObject.toJSONString(result));
+
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
       result.setMessage(e.getMessage());
+      log.error("批量删除房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
     }
   }
@@ -68,6 +80,8 @@ public class HouseInfoController {
   @ApiOperation("修改房源信息")
   @PostMapping("update")
   public Result<String> update(@RequestBody HouseInfoDO houseInfoDO) {
+    log.info("修改房源信息 入参={}", JSONObject.toJSONString(houseInfoDO));
+
     Result<String> result = new Result().failure("修改房源信息 失败", "修改房源信息 失败");
     try {
       if (1 > 1) {
@@ -75,10 +89,14 @@ public class HouseInfoController {
         return result;
       }
       houseInfoService.update(houseInfoDO);
-      return new Result().success("修改房源信息 成功", "修改房源信息 成功");
+      result = new Result().success("修改房源信息 成功", "修改房源信息 成功");
+
+      log.info("修改房源信息 出参={}", JSONObject.toJSONString(result));
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
       result.setMessage(e.getMessage());
+      log.error("修改房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
     }
   }
@@ -86,6 +104,8 @@ public class HouseInfoController {
   @ApiOperation("单个查询房源信息")
   @PostMapping("selectById")
   public Result<HouseInfoDO> selectById(@RequestBody Integer houseId) {
+    log.info(" 单个查询房源信息 入参={}", houseId);
+
     Result<HouseInfoDO> result = new Result().failure("单个查询房源信息 失败", "单个查询房源信息 失败");
     try {
       if (1 > 1) {
@@ -93,10 +113,14 @@ public class HouseInfoController {
         return result;
       }
       HouseInfoDO houseInfoDO = houseInfoService.selectById(houseId);
-      return new Result().success(houseInfoDO, "单个查询房源信息 成功");
+      result = new Result().success(houseInfoDO, "单个查询房源信息 成功");
+      log.info("单个查询房源信息 出参={}", JSONObject.toJSONString(result));
+
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
       result.setMessage(e.getMessage());
+      log.error("单个查询房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
     }
   }
@@ -104,6 +128,8 @@ public class HouseInfoController {
   @ApiOperation("分页查询房源信息")
   @PostMapping("selectByPage")
   public Result<PageList<HouseInfoDO>> selectByPage(@RequestBody HouseInfoDO houseInfoDO) {
+    log.info("分页查询房源信息 入参={}", JSONObject.toJSONString(houseInfoDO));
+
     Result<PageList<HouseInfoDO>> result = new Result().failure("分页查询房源信息 失败", "分页查询房源信息 失败");
     try {
       if (1 > 1) {
@@ -111,10 +137,13 @@ public class HouseInfoController {
         return result;
       }
       PageList<HouseInfoDO> pageList = houseInfoService.selectByPage(houseInfoDO);
-      return new Result().success(pageList, "分页查询房源信息 成功");
+      result = new Result().success(pageList, "分页查询房源信息 成功");
+      log.info("分页查询房源信息 出参={}", JSONObject.toJSONString(result));
+      return result;
     } catch (Exception e) {
       e.printStackTrace();
       result.setMessage(e.getMessage());
+      log.error("分页查询房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
     }
   }

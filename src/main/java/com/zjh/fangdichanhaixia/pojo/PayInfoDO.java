@@ -15,6 +15,7 @@ import java.util.Date;
 
 /**
  * Description:所有的付款收款信息
+ *
  * @author 赵剑宏
  * Date 2020-12-21
  */
@@ -23,25 +24,13 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PayInfoDO extends BaseDO{
+public class PayInfoDO extends BaseDO {
 
   /**
    * 主键id
    */
   @ApiModelProperty(value = "主键id", example = "1")
   private Integer id;
-
-  /**
-   * 支付类型 1给房东打款  2从租户收款  3.房屋公共维修   4.房屋水电燃气物业
-   */
-  @ApiModelProperty(value = "支付类型 1给房东打款  2从租户收款  3.房屋公共维修   4.房屋水电燃气物业", example = "1")
-  private Integer payType;
-
-  /**
-   * 备注
-   */
-  @ApiModelProperty(value = "备注", example = "备注")
-  private String remarks;
 
   /**
    * 房源ID
@@ -55,6 +44,17 @@ public class PayInfoDO extends BaseDO{
   @ApiModelProperty(value = "房间ID", example = "1")
   private Integer roomId;
 
+  /**
+   * 支付类型 1给房东打款  2从租户收款  3.房屋公共维修   4.房屋水电燃气物业
+   */
+  @ApiModelProperty(value = "支付类型 1.支付房东房租  2.收取租户房租  3.收取租户押金   4.退还租户押金    5.房屋公共维修   6.房屋水电燃气物业   ", example = "1")
+  private Integer payType;
+
+  /**
+   * 支付类型 1给房东打款  2从租户收款  3.房屋公共维修   4.房屋水电燃气物业
+   */
+  @ApiModelProperty(value = "支付类型 1.支付房东房租  2.收取租户房租  3.收取租户押金   4.退还租户押金    5.房屋公共维修   6.房屋水电燃气物业   ", example = "1")
+  private String payTypeStr;
   /**
    * 预计付款时间
    */
@@ -82,6 +82,19 @@ public class PayInfoDO extends BaseDO{
    */
   @ApiModelProperty(value = "支付状态  0未支付  1已支付", example = "1")
   private Integer payStatus;
+
+  /**
+   * 支付状态  0未支付  1已支付
+   */
+  @ApiModelProperty(value = "支付状态  0未支付  1已支付", example = "1")
+  private String payStatusStr;
+
+
+  /**
+   * 备注
+   */
+  @ApiModelProperty(value = "备注", example = "备注")
+  private String remarks;
 
   /**
    * 创建人

@@ -95,7 +95,7 @@
     values (#{houseId}, #{name},
       #{rentedStatus}, #{rentPeopleName}, #{rentPeoplePhoneNumber},
       #{payorType}, #{contractCode}, #{contractStartTime}, #{contractEndTime},
-      #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},0)
+      #{creatorName}, now(), #{updatorName}, now(),0)
   </insert>
 
 

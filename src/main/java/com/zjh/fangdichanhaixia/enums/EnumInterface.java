@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface EnumInterface {
   /**
-   * 收款类型
+   * 出租类型
    */
   enum RentedStatus{
     YIZUZHU(1, "已出租"),
@@ -65,19 +65,73 @@ public interface EnumInterface {
         return map;
     }
   }
+
+  /**
+   * 支付状态
+   */
+  enum PayStatus{
+    YISHOUKUAN(1, "已支付"),
+    WEISHOUKUAN(2, "未支付");
+    /**
+     * 编码
+     */
+    private Integer code;
+    /**
+     * 名称
+     */
+    private String name;
+
+    PayStatus(Integer code, String name) {
+      this.code = code;
+      this.name = name;
+    }
+
+    public Integer getCode() {
+      return code;
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    /**
+     * 根据code值获取name值
+     * @param code
+     * @return
+     */
+    public static String getNameByCode(Integer code) {
+      for (PayStatus e : PayStatus.values()) {
+        if (code.equals(e.getCode())) {
+          return e.getName();
+        }
+      }
+      return null;
+    }
+
+    /**
+     * 获取所有的枚举值
+     * @return
+     */
+    public static Map<Object,Object> getAllApplyArea() {
+      Map<Object,Object> map = new HashMap<>();
+      for (PayStatus e : PayStatus.values()) {
+        map.put(e.getCode(),e.getName());
+      }
+      return map;
+    }
+  }
+
   /**
    * 支出类型
    */
   enum PayType{
     //库存类型：0正品1残品2异常品3过期品
-    FANGZU(1, "房租"),
-    SHUIFEI(2, "水费"),
-    DIANFEI(3, "电费"),
-    WUYEFEI(4, "物业费"),
-    RANQIFEI(5, "燃气费"),
-    TUIYAJIN(6, "退押金"),
-    WEIXIU(7, "维修费"),
-    ZHUANGXIU(8, "装修费");
+    FU_FANGZU(1, "支付房东房租"),
+    SHOU_FANGZU(2, "收取租户房租"),
+    SHOU_FAJIN(3, "收取租户押金"),
+    FU_YAJIN(4, "退还租户押金"),
+    FU_COMMON(5, "房屋公共维修"),
+    FU_OTHOR(6, "房屋水电燃气物业");
     /**
      * 编码
      */

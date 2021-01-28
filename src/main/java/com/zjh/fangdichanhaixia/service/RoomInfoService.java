@@ -9,7 +9,9 @@ import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
 import com.zjh.fangdichanhaixia.utils.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ import java.util.List;
  * @date 2020/12/21
  */
 @Service
+@Transactional
 public class RoomInfoService {
   @Autowired
   private RoomInfoMapper roomInfoMapper;
@@ -32,6 +35,14 @@ public class RoomInfoService {
   }
 
   public void add(RoomInfoDO roomInfoDO) {
+    if(EnumInterface.RentedStatus.WEICHUZU.getCode().equals(roomInfoDO.getRentedStatus())){
+      roomInfoDO.setContractCode("");
+      roomInfoDO.setContractStartTime(new Date());
+      roomInfoDO.setContractEndTime(new Date());
+      roomInfoDO.setRentPeopleName("");
+      roomInfoDO.setRentPeoplePhoneNumber("");
+      roomInfoDO.setPayorType(0);
+    }
     roomInfoMapper.add(roomInfoDO);
   }
 
