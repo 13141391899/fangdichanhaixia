@@ -14,7 +14,7 @@ public interface EnumInterface {
   /**
    * 出租类型
    */
-  enum RentedStatus{
+  enum RentedStatus {
     YIZUZHU(1, "已出租"),
     WEICHUZU(2, "未出租");
     /**
@@ -27,49 +27,51 @@ public interface EnumInterface {
     private String name;
 
     RentedStatus(Integer code, String name) {
-        this.code = code;
-        this.name = name;
+      this.code = code;
+      this.name = name;
     }
 
     public Integer getCode() {
-        return code;
+      return code;
     }
 
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
     public static String getNameByCode(Integer code) {
-        for (RentedStatus e : RentedStatus.values()) {
-            if (code.equals(e.getCode())) {
-                return e.getName();
-            }
+      for (RentedStatus e : RentedStatus.values()) {
+        if (code.equals(e.getCode())) {
+          return e.getName();
         }
-        return null;
+      }
+      return null;
     }
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-        Map<Object,Object> map = new HashMap<>();
-        for (RentedStatus e : RentedStatus.values()) {
-            map.put(e.getCode(),e.getName());
-        }
-        return map;
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
+      for (RentedStatus e : RentedStatus.values()) {
+        map.put(e.getCode(), e.getName());
+      }
+      return map;
     }
   }
 
   /**
    * 支付状态
    */
-  enum PayStatus{
+  enum PayStatus {
     YISHOUKUAN(1, "已支付"),
     WEISHOUKUAN(2, "未支付");
     /**
@@ -96,6 +98,7 @@ public interface EnumInterface {
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
@@ -110,12 +113,13 @@ public interface EnumInterface {
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-      Map<Object,Object> map = new HashMap<>();
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
       for (PayStatus e : PayStatus.values()) {
-        map.put(e.getCode(),e.getName());
+        map.put(e.getCode(), e.getName());
       }
       return map;
     }
@@ -124,7 +128,7 @@ public interface EnumInterface {
   /**
    * 支出类型
    */
-  enum PayType{
+  enum PayType {
     //库存类型：0正品1残品2异常品3过期品
     FU_FANGZU(1, "支付房东房租"),
     SHOU_FANGZU(2, "收取租户房租"),
@@ -156,6 +160,7 @@ public interface EnumInterface {
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
@@ -170,12 +175,13 @@ public interface EnumInterface {
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-      Map<Object,Object> map = new HashMap<>();
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
       for (PayType e : PayType.values()) {
-        map.put(e.getCode(),e.getName());
+        map.put(e.getCode(), e.getName());
       }
       return map;
     }
@@ -184,7 +190,7 @@ public interface EnumInterface {
   /**
    * 支付房租的周期类型
    */
-  enum PayRentType{
+  enum PayRentType {
     //库存类型：0正品1残品2异常品3过期品
     YUEFU(1, "年付"),
     JIFU(2, "半年付"),
@@ -214,6 +220,7 @@ public interface EnumInterface {
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
@@ -228,12 +235,13 @@ public interface EnumInterface {
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-      Map<Object,Object> map = new HashMap<>();
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
       for (PayRentType e : PayRentType.values()) {
-        map.put(e.getCode(),e.getName());
+        map.put(e.getCode(), e.getName());
       }
       return map;
     }
@@ -242,7 +250,7 @@ public interface EnumInterface {
   /**
    * 实付款/预付款/实收款/预收款
    */
-  enum IsRealPayType{
+  enum IsRealPayType {
     //库存类型：0正品1残品2异常品3过期品
     SHIFUKUAN(1, "实付款"),
     YUFUKUAN(2, "预付款"),
@@ -272,6 +280,7 @@ public interface EnumInterface {
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
@@ -286,12 +295,13 @@ public interface EnumInterface {
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-      Map<Object,Object> map = new HashMap<>();
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
       for (IsRealPayType e : IsRealPayType.values()) {
-        map.put(e.getCode(),e.getName());
+        map.put(e.getCode(), e.getName());
       }
       return map;
     }
@@ -300,7 +310,7 @@ public interface EnumInterface {
   /**
    * 租住类型
    */
-  enum RentType{
+  enum RentType {
     //库存类型：0正品1残品2异常品3过期品
     ZHENGZU(1, "整租"),
     HEZU(2, "合租");
@@ -328,6 +338,7 @@ public interface EnumInterface {
 
     /**
      * 根据code值获取name值
+     *
      * @param code
      * @return
      */
@@ -342,12 +353,83 @@ public interface EnumInterface {
 
     /**
      * 获取所有的枚举值
+     *
      * @return
      */
-    public static Map<Object,Object> getAllApplyArea() {
-      Map<Object,Object> map = new HashMap<>();
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
       for (RentType e : RentType.values()) {
-        map.put(e.getCode(),e.getName());
+        map.put(e.getCode(), e.getName());
+      }
+      return map;
+    }
+  }
+
+
+  /**
+   * 操作类型
+   */
+  enum OpType {
+    ADD_BOSS(1, "新增老板信息"),
+    UPDATE_BOSS(2, "修改老板信息"),
+    DELETE_BOSS(3, "删除老板信息"),
+    ADD_HOUSE(4, "新增房源信息"),
+    UPDATE_HOUSE(5, "修改房源信息"),
+    DELETE_HOUSE(6, "删除房源信息"),
+    ADD_ROOM(7, "新增房间信息"),
+    UPDATE_ROOM(8, "修改房间信息"),
+    DELETE_ROOM(9, "删除房间信息"),
+    ADD_PAY(10, "新增支付信息"),
+    UPDATE_PAY(11, "修改支付信息"),
+    DELETE_PAY(12, "删除支付信息"),
+    LOGIN(13, "登录系统"),
+    LOGOUT(14, "退出系统");
+    /**
+     * 编码
+     */
+    private Integer code;
+    /**
+     * 名称
+     */
+    private String name;
+
+    OpType(Integer code, String name) {
+      this.code = code;
+      this.name = name;
+    }
+
+    public Integer getCode() {
+      return code;
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    /**
+     * 根据code值获取name值
+     *
+     * @param code
+     * @return
+     */
+    public static String getNameByCode(Integer code) {
+      for (OpType e : OpType.values()) {
+        if (code.equals(e.getCode())) {
+          return e.getName();
+        }
+      }
+      return null;
+    }
+
+    /**
+     * 获取所有的枚举值
+     *
+     * @return
+     */
+    public static Map<Object, Object> getAllApplyArea() {
+      Map<Object, Object> map = new HashMap<>();
+      for (OpType e : OpType.values()) {
+        map.put(e.getCode(), e.getName());
       }
       return map;
     }

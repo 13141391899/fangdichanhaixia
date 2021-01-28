@@ -24,6 +24,9 @@ public class OpLogInfoService {
   public PageList<OplogInfoDO> selectByPage(OplogInfoDO oplogInfoDO) {
     PageHelper.startPage(oplogInfoDO.getPageNum(), oplogInfoDO.getPageSize());
     Page<OplogInfoDO> page = (Page<OplogInfoDO>) opLogInfoMapper.selectByPage(oplogInfoDO);
+    page.getResult().forEach(item -> {
+      item.setTypeStr(EnumInterface.OpType.getNameByCode(item.getType()));
+    });
     return new PageList<>(page);
   }
 

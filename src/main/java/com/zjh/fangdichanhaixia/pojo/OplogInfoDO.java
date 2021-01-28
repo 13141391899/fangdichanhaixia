@@ -32,8 +32,16 @@ public class OplogInfoDO extends BaseDO {
   /**
    * 操作类型
    */
-  @ApiModelProperty(value = "操作类型", example = "1")
+  @ApiModelProperty(value = "操作类型  1新增老板信息  2修改老板信息  3删除老板信息 4新增房源信息  5修改房源信息  6删除房源信息  " +
+    "7新增房间信息  8修改房间信息  9删除房间信息  10新增支付信息  11修改支付信息  12删除支付信息 13登录系统  14退出系统", example = "1")
   private Integer type;
+
+  /**
+   * 操作类型
+   */
+  @ApiModelProperty(value = "操作类型  1新增老板信息  2修改老板信息  3删除老板信息 4新增房源信息  5修改房源信息  6删除房源信息  " +
+    "7新增房间信息  8修改房间信息  9删除房间信息  10新增支付信息  11修改支付信息  12删除支付信息 13登录系统  14退出系统", example = "1")
+  private String typeStr;
 
   /**
    * 操作人
