@@ -50,6 +50,12 @@ public class RoomInfoDO extends BaseDO {
   private Integer rentedStatus;
 
   /**
+   * 房间租住状态  1待出租 2已出租
+   */
+  @ApiModelProperty(value = "房间租住状态  1待出租 2已出租", example = "1")
+  private String rentedStatusStr;
+
+  /**
    * 租房人名称
    */
   @ApiModelProperty(value = "租房人名称", example = "租房人名称")
@@ -68,9 +74,15 @@ public class RoomInfoDO extends BaseDO {
   private Integer payorType;
 
   /**
+   * 付款类型 1年付  2半年付  3押一付三  4押一付一
+   */
+  @ApiModelProperty(value = "付款类型 1年付  2半年付  3押一付三  4押一付一", example = "1")
+  private String payorTypeStr;
+
+  /**
    * 租住开始时间
    */
-  @ApiModelProperty(value = "租住开始时间", example = "1970-01-01")
+  @ApiModelProperty(value = "合同开始时间", example = "1970-01-01")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
   private Date contractStartTime;
@@ -78,10 +90,16 @@ public class RoomInfoDO extends BaseDO {
   /**
    * 租住结束时间
    */
-  @ApiModelProperty(value = "租住结束时间", example = "1970-01-01")
+  @ApiModelProperty(value = "合同结束时间", example = "1970-01-01")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
   private Date contractEndTime;
+
+  /**
+   * 合同编号
+   */
+  @ApiModelProperty(value = "合同编号  ", example = "奥术大师1")
+  private String contractCode;
 
   /**
    * 创建人

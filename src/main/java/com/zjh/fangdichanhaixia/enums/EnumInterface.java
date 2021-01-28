@@ -14,10 +14,9 @@ public interface EnumInterface {
   /**
    * 收款类型
    */
-  enum PayeeType{
-    //库存类型：0正品1残品2异常品3过期品
-    FANGZU(1, "房租"),
-    YAJIN(2, "押金");
+  enum RentedStatus{
+    YIZUZHU(1, "已出租"),
+    WEICHUZU(2, "未出租");
     /**
      * 编码
      */
@@ -27,7 +26,7 @@ public interface EnumInterface {
      */
     private String name;
 
-    PayeeType(Integer code, String name) {
+    RentedStatus(Integer code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -46,7 +45,7 @@ public interface EnumInterface {
      * @return
      */
     public static String getNameByCode(Integer code) {
-        for (PayeeType e : PayeeType.values()) {
+        for (RentedStatus e : RentedStatus.values()) {
             if (code.equals(e.getCode())) {
                 return e.getName();
             }
@@ -60,7 +59,7 @@ public interface EnumInterface {
      */
     public static Map<Object,Object> getAllApplyArea() {
         Map<Object,Object> map = new HashMap<>();
-        for (PayeeType e : PayeeType.values()) {
+        for (RentedStatus e : RentedStatus.values()) {
             map.put(e.getCode(),e.getName());
         }
         return map;

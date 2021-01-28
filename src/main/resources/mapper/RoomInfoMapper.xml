@@ -9,6 +9,7 @@
     <result column="rent_people_name" jdbcType="VARCHAR" property="rentPeopleName"/>
     <result column="rent_people_phone_number" jdbcType="VARCHAR" property="rentPeoplePhoneNumber"/>
     <result column="payor_type" jdbcType="INTEGER" property="payorType"/>
+    <result column="contract_code" jdbcType="INTEGER" property="contractCode"/>
     <result column="contract_start_time" jdbcType="TIMESTAMP" property="contractStartTime"/>
     <result column="contract_end_time" jdbcType="TIMESTAMP" property="contractEndTime"/>
     <result column="creator_name" jdbcType="VARCHAR" property="creatorName"/>
@@ -18,7 +19,7 @@
     <result column="is_deleted" jdbcType="INTEGER" property="isDeleted"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, house_id, name, rented_status, rent_people_name, rent_people_phone_number, payor_type,
+    id, house_id, name, rented_status, rent_people_name, rent_people_phone_number, payor_type,contract_code,
     contract_start_time, contract_end_time, creator_name, create_time, updator_name, update_time,
     is_deleted
     </sql>
@@ -45,6 +46,9 @@
       </if>
       <if test="payorType != null">
         payor_type = #{payorType}
+      </if>
+      <if test="contractCode != null">
+        contract_code = #{contractCode}
       </if>
       <if test="contractStartTime != null">
         contract_start_time = #{contractStartTime}
@@ -85,12 +89,12 @@
   <insert id="add">
     insert into room_info (house_id, name,
       rented_status, rent_people_name, rent_people_phone_number,
-      payor_type, contract_start_time, contract_end_time,
+      payor_type, contract_code ,contract_start_time, contract_end_time,
       creator_name, create_time, updator_name, update_time,
       is_deleted)
     values (#{houseId}, #{name},
       #{rentedStatus}, #{rentPeopleName}, #{rentPeoplePhoneNumber},
-      #{payorType}, #{contractStartTime}, #{contractEndTime},
+      #{payorType}, #{contractCode}, #{contractStartTime}, #{contractEndTime},
       #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},0)
   </insert>
 
@@ -115,6 +119,9 @@
       </if>
       <if test="payorType != null">
         payor_type = #{payorType},
+      </if>
+      <if test="contractCode != null">
+        contract_code = #{contractCode},
       </if>
       <if test="contractStartTime != null">
         contract_start_time = #{contractStartTime},

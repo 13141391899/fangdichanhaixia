@@ -2,6 +2,7 @@ package com.zjh.fangdichanhaixia.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.zjh.fangdichanhaixia.enums.EnumInterface;
 import com.zjh.fangdichanhaixia.mapper.RoomInfoMapper;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
@@ -23,6 +24,10 @@ public class RoomInfoService {
   public PageList<RoomInfoDO> selectByPage(RoomInfoDO roomInfoDO) {
     PageHelper.startPage(roomInfoDO.getPageNum(), roomInfoDO.getPageSize());
     Page<RoomInfoDO> page = (Page<RoomInfoDO>) roomInfoMapper.selectByPage(roomInfoDO);
+    page.getResult().forEach(item-> {
+      item.setRentedStatusStr(EnumInterface.RentedStatus.getNameByCode(item.getRentedStatus()));
+      item.setPayorTypeStr(EnumInterface.PayRentType.getNameByCode(item.getPayorType()));
+    });
     return new PageList<>(page);
   }
 
