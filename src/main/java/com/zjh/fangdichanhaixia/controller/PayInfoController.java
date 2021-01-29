@@ -1,7 +1,11 @@
 package com.zjh.fangdichanhaixia.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zjh.fangdichanhaixia.enums.EnumInterface;
+import com.zjh.fangdichanhaixia.pojo.BossInfoDO;
+import com.zjh.fangdichanhaixia.pojo.OplogInfoDO;
 import com.zjh.fangdichanhaixia.pojo.PayInfoDO;
+import com.zjh.fangdichanhaixia.service.OpLogInfoService;
 import com.zjh.fangdichanhaixia.service.PayInfoService;
 import com.zjh.fangdichanhaixia.utils.PageList;
 import com.zjh.fangdichanhaixia.utils.Result;
@@ -9,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +25,13 @@ import java.util.List;
 @Api(value = "支付信息Controller", tags = "支付信息Controller")
 @RequestMapping("payInfo")
 @Slf4j
+@Transactional
 public class PayInfoController {
 
   @Autowired
   PayInfoService payInfoService;
+  @Autowired
+  OpLogInfoService opLogInfoService;
 
   @ApiOperation("新增支付信息")
   @PostMapping("add")
@@ -37,6 +45,7 @@ public class PayInfoController {
         return result;
       }
       payInfoService.add(payInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.ADD_PAY.getCode()).contentNew(JSONObject.toJSONString(payInfoDO)).contentOld(null).build());
       result = new Result().success("新增支付信息 成功", "新增支付信息 成功");
       log.info("新增支付信息 出参={}", JSONObject.toJSONString(result));
 
@@ -61,6 +70,7 @@ public class PayInfoController {
         return result;
       }
       payInfoService.deleteBatch(payIds);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.DELETE_PAY.getCode()).contentNew(JSONObject.toJSONString(payIds)).contentOld(null).build());
       result = new Result().success("批量删除支付信息 成功", "批量删除支付信息 成功");
       log.info("批量删除支付信息 出参={}", JSONObject.toJSONString(result));
 
@@ -84,7 +94,9 @@ public class PayInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      PayInfoDO payInfoDOOld = payInfoService.selectById(payInfoDO.getId());
       payInfoService.update(payInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.UPDATE_BOSS.getCode()).contentNew(JSONObject.toJSONString(payInfoDO)).contentOld(JSONObject.toJSONString(payInfoDOOld)).build());
       result = new Result().success("修改支付信息 成功", "修改支付信息 成功");
       log.info("修改支付信息 出参={}", JSONObject.toJSONString(result));
 

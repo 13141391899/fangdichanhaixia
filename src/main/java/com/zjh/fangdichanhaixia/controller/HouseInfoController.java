@@ -1,14 +1,19 @@
 package com.zjh.fangdichanhaixia.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zjh.fangdichanhaixia.enums.EnumInterface;
+import com.zjh.fangdichanhaixia.pojo.BossInfoDO;
 import com.zjh.fangdichanhaixia.pojo.HouseInfoDO;
+import com.zjh.fangdichanhaixia.pojo.OplogInfoDO;
 import com.zjh.fangdichanhaixia.service.HouseInfoService;
+import com.zjh.fangdichanhaixia.service.OpLogInfoService;
 import com.zjh.fangdichanhaixia.utils.PageList;
 import com.zjh.fangdichanhaixia.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +27,14 @@ import java.util.List;
 @Api(value = "房源信息Controller", tags = "房源信息Controller")
 @RequestMapping("houseInfo")
 @Slf4j
+@Transactional
 public class HouseInfoController {
 
   @Autowired
   HouseInfoService houseInfoService;
+  @Autowired
 
+  OpLogInfoService opLogInfoService;
   @ApiOperation("新增房源信息")
   @PostMapping("add")
   public Result<String> add(@RequestBody HouseInfoDO houseInfoDO) {
@@ -42,6 +50,7 @@ public class HouseInfoController {
       houseInfoDO.setUpdatorName("王海霞");
       houseInfoDO.setUpdateTime(new Date());
       houseInfoService.add(houseInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.ADD_HOUSE.getCode()).contentNew(JSONObject.toJSONString(houseInfoDO)).contentOld(null).build());
       result = new Result().success("新增房源信息 成功", "新增房源信息 成功");
       log.info(" 新增房源信息 出参={}", JSONObject.toJSONString(result));
       return result;
@@ -65,6 +74,7 @@ public class HouseInfoController {
         return result;
       }
       houseInfoService.deleteBatch(houseIds);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.DELETE_BOSS.getCode()).contentNew(JSONObject.toJSONString(houseIds)).contentOld(null).build());
       result = new Result().success("批量删除房源信息 成功", "批量删除房源信息 成功");
       log.info("批量删除房源信息 出参={}", JSONObject.toJSONString(result));
 
@@ -88,7 +98,9 @@ public class HouseInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      HouseInfoDO houseInfoDOOld = houseInfoService.selectById(houseInfoDO.getId());
       houseInfoService.update(houseInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.UPDATE_BOSS.getCode()).contentNew(JSONObject.toJSONString(houseInfoDO)).contentOld(JSONObject.toJSONString(houseInfoDOOld)).build());
       result = new Result().success("修改房源信息 成功", "修改房源信息 成功");
 
       log.info("修改房源信息 出参={}", JSONObject.toJSONString(result));

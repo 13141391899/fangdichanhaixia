@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 /**
  * Description:操作日志表
  *
@@ -55,7 +57,7 @@ public class OplogInfoDO extends BaseDO {
   @ApiModelProperty(value = "操作时间", example = "1")
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  private String createTime;
+  private Date createTime;
 
   /**
    * 操作前的旧值

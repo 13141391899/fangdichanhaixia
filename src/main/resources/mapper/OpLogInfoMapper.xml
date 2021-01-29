@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjh.fangdichanhaixia.mapper.OpLogInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zjh.fangdichanhaixia.pojo.OplogInfoDO">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="type" property="type" jdbcType="TINYINT"/>
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="content_old" property="contentOld" jdbcType="VARCHAR"/>
+    <result column="content_new" property="contentNew" jdbcType="VARCHAR"/>
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id
+    , type, creator_name, create_time, content_old, content_new, is_deleted
+  </sql>
+
+
+  <insert id="add">
+    insert into oplog_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        type,
+      </if>
+      <if test="creatorName != null">
+        creator_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="contentOld != null">
+        content_old,
+      </if>
+      <if test="contentNew != null">
+        content_new,
+      </if>
+        is_deleted
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="creatorName != null">
+        #{creatorName},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="contentOld != null">
+        #{contentOld},
+      </if>
+      <if test="contentNew != null">
+        #{contentNew},
+      </if>
+     0
+    </trim>
+  </insert>
+
+  <select id="selectByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from oplog_info
+    <where>
+      <if test="type != null">
+        and type = #{type}
+      </if>
+      <if test="creatorName != null">
+        and creator_name = #{creatorName}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+      <if test="contentOld != null">
+        and content_old = #{contentOld}
+      </if>
+      <if test="contentNew != null">
+        and content_new = #{contentNew}
+      </if>
+      <if test="isDeleted != null">
+        and is_deleted = #{isDeleted}
+      </if>
+      and is_deleted =0
+    </where>
+  </select>
+</mapper>

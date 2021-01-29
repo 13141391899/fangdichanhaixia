@@ -1,7 +1,11 @@
 package com.zjh.fangdichanhaixia.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zjh.fangdichanhaixia.enums.EnumInterface;
+import com.zjh.fangdichanhaixia.pojo.BossInfoDO;
+import com.zjh.fangdichanhaixia.pojo.OplogInfoDO;
 import com.zjh.fangdichanhaixia.pojo.RoomInfoDO;
+import com.zjh.fangdichanhaixia.service.OpLogInfoService;
 import com.zjh.fangdichanhaixia.service.RoomInfoService;
 import com.zjh.fangdichanhaixia.utils.PageList;
 import com.zjh.fangdichanhaixia.utils.Result;
@@ -9,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +26,12 @@ import java.util.List;
 @Api(value = "房间信息Controller", tags = "房间信息Controller")
 @RequestMapping("roomInfo")
 @Slf4j
+@Transactional
 public class RoomInfoController {
   @Autowired
   RoomInfoService roomInfoService;
+  @Autowired
+  OpLogInfoService opLogInfoService;
 
   @ApiOperation("新增房间信息")
   @PostMapping("add")
@@ -39,6 +47,7 @@ public class RoomInfoController {
       roomInfoDO.setCreatorName("王海霞");
       roomInfoDO.setUpdatorName("王海霞");
       roomInfoService.add(roomInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.ADD_ROOM.getCode()).contentNew(JSONObject.toJSONString(roomInfoDO)).contentOld(null).build());
       result = new Result().success("新增房间信息 成功", "新增房间信息 成功");
       log.info("新增房间信息 出参={}", JSONObject.toJSONString(result));
 
@@ -53,8 +62,8 @@ public class RoomInfoController {
 
   @ApiOperation("批量删除房间信息")
   @PostMapping("deleteBatch")
-  public Result<String> deleteBatch(@RequestBody List<Integer> payIds) {
-    log.info("批量删除房间信息 入参={}", JSONObject.toJSONString(payIds));
+  public Result<String> deleteBatch(@RequestBody List<Integer> roomIds) {
+    log.info("批量删除房间信息 入参={}", JSONObject.toJSONString(roomIds));
 
     Result<String> result = new Result().failure("批量删除房间信息 失败", "批量删除房间信息 失败");
     try {
@@ -62,7 +71,8 @@ public class RoomInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
-      roomInfoService.deleteBatch(payIds);
+      roomInfoService.deleteBatch(roomIds);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.DELETE_ROOM.getCode()).contentNew(JSONObject.toJSONString(roomIds)).contentOld(null).build());
       result = new Result().success("批量删除房间信息 成功", "批量删除房间信息 成功");
       log.info("批量删除房间信息 出参={}", JSONObject.toJSONString(result));
 
@@ -86,7 +96,9 @@ public class RoomInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      RoomInfoDO roomInfoDOOld = roomInfoService.selectById(roomInfoDO.getId());
       roomInfoService.update(roomInfoDO);
+      opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.UPDATE_BOSS.getCode()).contentNew(JSONObject.toJSONString(roomInfoDO)).contentOld(JSONObject.toJSONString(roomInfoDOOld)).build());
       result = new Result().success("修改房间信息 成功", "修改房间信息 成功");
       log.info("修改房间信息 出参={}", JSONObject.toJSONString(result));
 

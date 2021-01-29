@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * @author Zhao JianHong
  * @date 2020/12/21
@@ -31,6 +33,8 @@ public class OpLogInfoService {
   }
 
   public void add(OplogInfoDO oplogInfoDO) {
+    oplogInfoDO.setCreatorName("王海霞");
+    oplogInfoDO.setCreateTime(new Date());
     opLogInfoMapper.add(oplogInfoDO);
   }
 
