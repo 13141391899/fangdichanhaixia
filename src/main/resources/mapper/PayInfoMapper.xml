@@ -87,7 +87,7 @@
     values (#{payType}, #{remarks},
       #{houseId}, #{roomId}, #{expectPayTime},
       #{realPayTime}, #{payAmount,jdbcType=DECIMAL}, #{payStatus},
-      #{creatorName}, #{createTime}, #{updatorName}, #{updateTime},
+      #{creatorName}, now(), #{updatorName}, now(),
       0)
   </insert>
 

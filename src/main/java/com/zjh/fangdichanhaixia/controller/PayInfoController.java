@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -44,6 +45,8 @@ public class PayInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      payInfoDO.setCreatorName("王海霞");
+      payInfoDO.setUpdatorName("王海霞");
       payInfoService.add(payInfoDO);
       opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.ADD_PAY.getCode()).contentNew(JSONObject.toJSONString(payInfoDO)).contentOld(null).build());
       result = new Result().success("新增支付信息 成功", "新增支付信息 成功");
@@ -95,6 +98,8 @@ public class PayInfoController {
         return result;
       }
       PayInfoDO payInfoDOOld = payInfoService.selectById(payInfoDO.getId());
+      payInfoDO.setUpdatorName("王海霞");
+      payInfoDO.setUpdateTime(new Date());
       payInfoService.update(payInfoDO);
       opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.UPDATE_BOSS.getCode()).contentNew(JSONObject.toJSONString(payInfoDO)).contentOld(JSONObject.toJSONString(payInfoDOOld)).build());
       result = new Result().success("修改支付信息 成功", "修改支付信息 成功");
