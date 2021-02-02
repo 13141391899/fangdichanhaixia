@@ -83,6 +83,11 @@ public class HouseInfoDO extends BaseDO{
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
   private Date contractEndTime;
 
+  @ApiModelProperty(value = "合同起止日期", example = "2020-01-01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+  private Date[] contracTimeArr;
+
   /**
    * 租住类型  1整租 2合租
    */

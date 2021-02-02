@@ -148,6 +148,12 @@ public class HouseInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      if(null != houseInfoDO.getContracTimeArr()){
+        houseInfoDO.setContractStartTime(houseInfoDO.getContracTimeArr()[0]);
+        houseInfoDO.setContractEndTime(houseInfoDO.getContracTimeArr()[1]);
+      }
+      System.out.println(houseInfoDO.getContracTimeArr());
+      System.out.println(houseInfoDO.getContractStartTime());
       PageList<HouseInfoDO> pageList = houseInfoService.selectByPage(houseInfoDO);
       result = new Result().success(pageList, "分页查询房源信息 成功");
       log.info("分页查询房源信息 出参={}", JSONObject.toJSONString(result));

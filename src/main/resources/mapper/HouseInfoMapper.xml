@@ -34,49 +34,49 @@
     from house_info
     <where>
       <if test="bossId != null">
-        boss_id = #{bossId}
+       and  boss_id = #{bossId}
       </if>
       <if test="address != null">
-        address = #{address}
+        and address = #{address}
       </if>
       <if test="ownerName != null">
-        owner_name = #{ownerName}
+        and owner_name = #{ownerName}
       </if>
       <if test="ownerPhoneNumber != null">
-        owner_phone_number = #{ownerPhoneNumber}
+        and owner_phone_number = #{ownerPhoneNumber}
       </if>
       <if test="payeeName != null">
-        payee_name = #{payeeName}
+        and payee_name = #{payeeName}
       </if>
       <if test="payeePhoneNumber != null">
-        payee_phone_number = #{payeePhoneNumber}
+        and payee_phone_number = #{payeePhoneNumber}
       </if>
       <if test="contractStartTime != null">
-        contract_start_time = #{contractStartTime}
+        and contract_start_time >= #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        contract_end_time = #{contractEndTime}
+        and contract_end_time &lt;= #{contractEndTime}
       </if>
       <if test="rentedType != null">
-        rented_type = #{rentedType}
+        and rented_type = #{rentedType}
       </if>
       <if test="creatorName != null">
-        creator_name = #{creatorName}
+        and creator_name = #{creatorName}
       </if>
       <if test="updatorName != null">
-        updator_name = #{updatorName}
+        and updator_name = #{updatorName}
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime}
+        and update_time = #{updateTime}
       </if>
       <if test="contractCode != null">
-        contract_code = #{contractCode}
+        and contract_code = #{contractCode}
       </if>
       <if test="payorType != null">
-        payor_type = #{payorType}
+        and payor_type = #{payorType}
       </if>
       <if test="payeeAccount != null">
-        payee_account = #{payeeAccount}
+        and payee_account = #{payeeAccount}
       </if>
       and is_deleted =0
     </where>

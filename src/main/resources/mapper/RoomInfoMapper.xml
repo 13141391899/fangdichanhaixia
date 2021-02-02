@@ -30,43 +30,43 @@
     from room_info
     <where>
       <if test="houseId != null">
-        house_id = #{houseId}
+        and house_id = #{houseId}
       </if>
       <if test="name != null">
-        name = #{name}
+        and name = #{name}
       </if>
       <if test="rentedStatus != null">
-        rented_status = #{rentedStatus}
+        and  rented_status = #{rentedStatus}
       </if>
       <if test="rentPeopleName != null">
-        rent_people_name = #{rentPeopleName}
+        and  rent_people_name = #{rentPeopleName}
       </if>
       <if test="rentPeoplePhoneNumber != null">
-        rent_people_phone_number = #{rentPeoplePhoneNumber}
+        and  rent_people_phone_number = #{rentPeoplePhoneNumber}
       </if>
       <if test="payorType != null">
-        payor_type = #{payorType}
+        and payor_type = #{payorType}
       </if>
       <if test="contractCode != null">
-        contract_code = #{contractCode}
+        and contract_code = #{contractCode}
       </if>
       <if test="contractStartTime != null">
-        contract_start_time = #{contractStartTime}
+        and  contract_start_time = #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        contract_end_time = #{contractEndTime}
+        and contract_end_time = #{contractEndTime}
       </if>
       <if test="creatorName != null">
-        creator_name = #{creatorName}
+        and creator_name = #{creatorName}
       </if>
       <if test="updatorName != null">
-        updator_name = #{updatorName}
+        and updator_name = #{updatorName}
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime}
+        and update_time = #{updateTime}
       </if>
       <if test="isDeleted != null">
-        is_deleted = #{isDeleted}
+        and  is_deleted = #{isDeleted}
       </if>
       and is_deleted =0
     </where>

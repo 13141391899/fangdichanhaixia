@@ -27,37 +27,37 @@
     from pay_info
     <where>
       <if test="payType != null">
-        pay_type = #{payType}
+        and pay_type = #{payType}
       </if>
       <if test="remarks != null">
-        remarks = #{remarks}
+        and remarks = #{remarks}
       </if>
       <if test="houseId != null">
-        house_id = #{houseId}
+        and  house_id = #{houseId}
       </if>
       <if test="roomId != null">
-        room_id = #{roomId}
+        and  room_id = #{roomId}
       </if>
       <if test="expectPayTime != null">
-        expect_pay_time = #{expectPayTime}
+        and  expect_pay_time = #{expectPayTime}
       </if>
       <if test="realPayTime != null">
-        real_pay_time = #{realPayTime}
+        and real_pay_time = #{realPayTime}
       </if>
       <if test="payAmount != null">
-        pay_amount = #{payAmount,jdbcType=DECIMAL}
+        and  pay_amount = #{payAmount,jdbcType=DECIMAL}
       </if>
       <if test="payStatus != null">
-        pay_status = #{payStatus}
+        and  pay_status = #{payStatus}
       </if>
       <if test="creatorName != null">
-        creator_name = #{creatorName}
+        and  creator_name = #{creatorName}
       </if>
       <if test="updatorName != null">
-        updator_name = #{updatorName}
+        and updator_name = #{updatorName}
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime}
+        and  update_time = #{updateTime}
       </if>
       and is_deleted =0
     </where>
