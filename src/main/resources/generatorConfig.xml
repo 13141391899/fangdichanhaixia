@@ -6,13 +6,17 @@
   <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
   <classPathEntry  location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar"/>
   <context id="DB2Tables"  targetRuntime="MyBatis3">
-    <commentGenerator>
+    <commentGenerator type="com.zjh.fangdichanhaixia.service.MyCommentGenerator">
       <property name="suppressDate" value="true"/>
       <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-      <property name="suppressAllComments" value="true"/>
+      <property name="suppressAllComments" value="false"/>
     </commentGenerator>
     <!--数据库链接URL，用户名、密码 -->
+<!--
     <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://rm-2ze7j0186i64ny879co.mysql.rds.aliyuncs.com/fangdichan" userId="zhaojianhong" password="Mimashi123">
+-->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://47.94.53.124:3306/performancedb" userId="erp_wr" password="w19R8EroDvaN8OIr">
+
     </jdbcConnection>
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
@@ -23,15 +27,59 @@
       <property name="trimStrings" value="true"/>
     </javaModelGenerator>
 
-    <!-- 生成映射文件的包名和位置-->
+ <!--   &lt;!&ndash; 生成映射文件的包名和位置&ndash;&gt;-->
     <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
       <property name="enableSubPackages" value="true"/>
     </sqlMapGenerator>
 
     <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
 
-    <table tableName="oplog_info" domainObjectName="OpLogInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+    <table tableName="perf_check_range" domainObjectName="PerfCheckRange" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
            selectByExampleQueryId="false"></table>
 
+    <table tableName="perf_dictionary" domainObjectName="PerfDictionary" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_examinate" domainObjectName="PerfExaminate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_examinate_norm" domainObjectName="PerfExaminateNorm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_grade" domainObjectName="PerfGrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_grade_detail" domainObjectName="PerfGradeDetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_model" domainObjectName="PerfModel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_model_company" domainObjectName="PerfModelCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_model_detail" domainObjectName="PerfModelDetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_model_process" domainObjectName="PerfModelProcess" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_model_process_detail" domainObjectName="PerfModelProcessDetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_norm" domainObjectName="PerfNorm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_norm_class" domainObjectName="PerfNormClass" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_norm_evaluation_standard" domainObjectName="PerfNormEvaluationStandard" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_norm_standard_formula" domainObjectName="PerfNormStandardFormula" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
+
+    <table tableName="perf_plan" domainObjectName="PerfPlan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+           selectByExampleQueryId="false"></table>
   </context>
 </generatorConfiguration>
