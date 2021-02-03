@@ -51,10 +51,10 @@
         and contract_code = #{contractCode}
       </if>
       <if test="contractStartTime != null">
-        and  contract_start_time = #{contractStartTime}
+        and  contract_start_time >= #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        and contract_end_time = #{contractEndTime}
+        and contract_end_time &lt;= DATE_SUB( DATE_ADD(#{contractEndTime}, INTERVAL 1 DAY),INTERVAL 1 SECOND)
       </if>
       <if test="creatorName != null">
         and creator_name = #{creatorName}

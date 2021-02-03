@@ -60,6 +60,10 @@ public class OpLogController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      if (null != oplogInfoDO.getCreateTimeArr()) {
+        oplogInfoDO.setCreateTimeStart(oplogInfoDO.getCreateTimeArr()[0]);
+        oplogInfoDO.setCreateTimeEnd(oplogInfoDO.getCreateTimeArr()[1]);
+      }
       PageList<OplogInfoDO> pageList = opLogInfoService.selectByPage(oplogInfoDO);
       result = new Result().success(pageList, "分页查询操作日志信息 成功");
       log.info("分页查询操作日志信息 出参={}", JSONObject.toJSONString(result));

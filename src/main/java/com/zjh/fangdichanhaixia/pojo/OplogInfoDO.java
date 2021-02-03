@@ -54,10 +54,31 @@ public class OplogInfoDO extends BaseDO {
   /**
    * 操作时间
    */
-  @ApiModelProperty(value = "操作时间", example = "1")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+  @ApiModelProperty(value = "操作时间", example = "2020-01-01 01:01:01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
   private Date createTime;
+
+  /**
+   * 操作时间
+   */
+  @ApiModelProperty(value = "操作时间", example = "2020-01-01 01:01:01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+  private Date createTimeStart;
+
+  /**
+   * 操作时间
+   */
+  @ApiModelProperty(value = "操作时间", example = "2020-01-01 01:01:01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+  private Date createTimeEnd;
+
+  @ApiModelProperty(value = "合同起止日期", example = "2020-01-01 01:01:01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+  private Date[] createTimeArr;
 
   /**
    * 操作前的旧值

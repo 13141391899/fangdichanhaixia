@@ -43,6 +43,9 @@ public class RoomInfoController {
       if (1 > 1) {
         result.setMessage("我是错误提示语");
         return result;
+      } if (null != roomInfoDO.getContracTimeArr()) {
+        roomInfoDO.setContractStartTime(roomInfoDO.getContracTimeArr()[0]);
+        roomInfoDO.setContractEndTime(roomInfoDO.getContracTimeArr()[1]);
       }
       roomInfoDO.setCreatorName("王海霞");
       roomInfoDO.setUpdatorName("王海霞");
@@ -96,6 +99,10 @@ public class RoomInfoController {
         result.setMessage("我是错误提示语");
         return result;
       }
+      if (null != roomInfoDO.getContracTimeArr()) {
+        roomInfoDO.setContractStartTime(roomInfoDO.getContracTimeArr()[0]);
+        roomInfoDO.setContractEndTime(roomInfoDO.getContracTimeArr()[1]);
+      }
       RoomInfoDO roomInfoDOOld = roomInfoService.selectById(roomInfoDO.getId());
       roomInfoService.update(roomInfoDO);
       opLogInfoService.add(OplogInfoDO.builder().type(EnumInterface.OpType.UPDATE_BOSS.getCode()).contentNew(JSONObject.toJSONString(roomInfoDO)).contentOld(JSONObject.toJSONString(roomInfoDOOld)).build());
@@ -144,6 +151,10 @@ public class RoomInfoController {
       if (1 > 1) {
         result.setMessage("我是错误提示语");
         return result;
+      }
+      if (null != roomInfoDO.getContracTimeArr()) {
+        roomInfoDO.setContractStartTime(roomInfoDO.getContracTimeArr()[0]);
+        roomInfoDO.setContractEndTime(roomInfoDO.getContracTimeArr()[1]);
       }
       PageList<RoomInfoDO> pageList = roomInfoService.selectByPage(roomInfoDO);
       result = new Result().success(pageList, "分页查询房间信息 成功");

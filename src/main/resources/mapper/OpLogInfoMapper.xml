@@ -67,8 +67,11 @@
       <if test="creatorName != null">
         and creator_name = #{creatorName}
       </if>
-      <if test="createTime != null">
-        and create_time = #{createTime}
+      <if test="createTimeStart != null">
+        and create_time >= #{createTimeStart}
+      </if>
+      <if test="createTimeEnd != null">
+        and create_time &lt;= #{createTimeEnd}
       </if>
       <if test="contentOld != null">
         and content_old = #{contentOld}

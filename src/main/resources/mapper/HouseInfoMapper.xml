@@ -55,7 +55,7 @@
         and contract_start_time >= #{contractStartTime}
       </if>
       <if test="contractEndTime != null">
-        and contract_end_time &lt;= #{contractEndTime}
+        and contract_end_time &lt;= DATE_SUB( DATE_ADD(#{contractEndTime}, INTERVAL 1 DAY),INTERVAL 1 SECOND)
       </if>
       <if test="rentedType != null">
         and rented_type = #{rentedType}

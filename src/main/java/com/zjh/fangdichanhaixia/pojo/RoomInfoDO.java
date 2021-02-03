@@ -95,6 +95,12 @@ public class RoomInfoDO extends BaseDO {
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
   private Date contractEndTime;
 
+
+  @ApiModelProperty(value = "合同起止日期", example = "2020-01-01")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+  private Date[] contracTimeArr;
+
   /**
    * 合同编号
    */
